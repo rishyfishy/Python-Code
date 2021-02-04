@@ -7,3 +7,6 @@ This includes
 - leetcode/hackerrank challenges
 - coursework
 - attempts to format data or automate data collection from other course projects
+
+$$\int_a^b$$
+
