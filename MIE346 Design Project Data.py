@@ -1,7 +1,7 @@
 # To add a new cell, type '# %%'
 # To add a new markdown cell, type '# %% [markdown]'
 # %%
-resistorString='''
+resistorString = '''
 1.0 10 100 1.0K 10K 100K 1.0M
 1.1 11 110 1.1K 11K 110K 1.1M
 1.2 12 120 1.2K 12K 120K 1.2M
@@ -27,28 +27,57 @@ resistorString='''
 8.2 82 820 8.2K 82K 820K 8.2M
 9.1 91 910 9.1K 91K 910K 9.1M
 '''
-resistorsList=resistorString.split()
 
+
+capacitorString = '''
+10pF 100pF 1000pF .010mF .10mF 1.0mF 10mF
+12pF 120pF 1200pF .012mF .12mF 1.2mF
+15pF 150pF 1500pF .015mF .15mF 1.5mF
+18pF 180pF 1800pF .018mF .18mF 1.8mF
+22pF 220pF 2200pF .022mF .22mF 2.2mF 22mF
+27pF 270pF 2700pF .027mF .27mF 2.7mF
+33pF 330pF 3300pF .033mF .33mF 3.3mF 33mF
+39pF 390pF 3900pF .039mF .39mF 3.9mF
+47pF 470pF 4700pF .047mF .47mF 4.7mF 47uF
+56pF 560pF 5600pF .056mF .56mF 5.6mF
+68pF 680pF 6800pF .068mF .68mF 6.8mF
+82pF 820pF 8200pF .082mF .82mF 8.2mF
+'''
 
 # %%
+def removeUnit(string:str, unit:str)->str:
+    removed = string.replace(unit,'')
+    return removed 
 
-def formatList(lst):        
-    for i in range(len(resistorsList)):
-        if lst[i][-1]=="K":
-            lst[i]= float(lst[i][:-1])*1000
-        elif lst[i][-1]=="M":
-            lst[i]= float(lst[i][:-1])*1000000
-        elif lst[i][-1]=="m":
-            lst[i]= float(lst[i][:-1])*0.001
-        elif lst[i][-1]=="μ":
-            lst[i]= float(lst[i][:-1])*0.000001
-        elif lst[i][-1]=="ν":
-            lst[i]= float(lst[i][:-1])*0.000000001
-        elif lst[i][-1]=="p":
-            lst[i]= float(lst[i][:-1])*0.000000000001
+def formatList(lst):
+    '''
+    Formats list of strings into numbers.
+    '''
+    for i in range(len(lst)):
+        if lst[i][-1] == "M":
+            lst[i] = float(lst[i][:-1])*1000000
+        elif lst[i][-1] == "K":
+            lst[i] = float(lst[i][:-1])*1000
+        elif lst[i][-1] == "m":
+            lst[i] = float(lst[i][:-1])*0.001
+        elif lst[i][-1] == "μ" or lst[i][-1] == "u":
+            lst[i] = float(lst[i][:-1])*0.000001
+        elif lst[i][-1] == "n":
+            lst[i] = float(lst[i][:-1])*0.000000001
+        elif lst[i][-1] == "p":
+            lst[i] = float(lst[i][:-1])*0.000000000001
         else:
-            lst[i]= float(lst[i])
+            lst[i] = float(lst[i])
     lst.sort()
     return lst
+
+removedUnitCapacitorString = removeUnit(capacitorString,'F')
+resistorsList = resistorString.split()
+capacitorList = removedUnitCapacitorString.split()
+
+
 formatList(resistorsList)
+formatList(capacitorList)
 # %%
+print(resistorsList)
+print(capacitorList)

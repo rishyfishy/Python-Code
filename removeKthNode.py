@@ -16,9 +16,9 @@ def remove_kth_from_linked_list(head, k):
         mynode=mynode.next
     mynode.next=mynode.next.next 
 
-head = Node(1, Node(2, Node(3, Node(4, Node(5)))))
-print(head)
-# [1, 2, 3, 4, 5]
-remove_kth_from_linked_list(head, 3)
-print(head)
-# [1, 2, 4, 5]
+# head = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+# print(head)
+# # [1, 2, 3, 4, 5]
+# remove_kth_from_linked_list(head, 3)
+# print(head)
+# # [1, 2, 4, 5]
