@@ -1,4 +1,11 @@
 def Thomas(matrix, vector):
+    '''
+    Void function that solves tridiagonal systems of equations
+    inputs:
+        matrix: a square matrix describing the system _A_
+        vector: the input vector _x_
+
+    '''
     #forward prop
     for i in range(len(vector)-1):
         matrix[i][i+1] /= matrix[i][i]
@@ -24,11 +31,11 @@ def Thomas(matrix, vector):
 
 
 
-matrix=[[2,-1,0,0,0],[-1,2,-1,0,0],[0,-1,2,-1,0],[0,0,-1,2,-1],[0,0,0,-1,2]]
-vector=[1,1,1,1,1]
+# matrix=[[2,-1,0,0,0],[-1,2,-1,0,0],[0,-1,2,-1,0],[0,0,-1,2,-1],[0,0,0,-1,2]]
+# vector=[1,1,1,1,1]
 
-Thomas(matrix,vector)
-for i in matrix:
-    print (i)
-print('\n')
-print([round(x,5) for x in vector])
+# Thomas(matrix,vector)
+# for i in matrix:
+#     print (i)
+# print('\n')
+# print([round(x,5) for x in vector])
