@@ -1,4 +1,8 @@
-def Thomas(matrix, vector):
+
+
+
+
+def thomas(matrix, vector):
     '''
     Void function that solves tridiagonal systems of equations
     inputs:
@@ -6,36 +10,49 @@ def Thomas(matrix, vector):
         vector: the input vector _x_
 
     '''
-    #forward prop
-    for i in range(len(vector)-1):
-        matrix[i][i+1] /= matrix[i][i]
-        vector[i] /= matrix[i][i]
-        matrix[i][i] = 1
+    matrixCopy = [v.copy()for v in matrix]
+    vectorCopy = vector.copy()
+    forMatrix, forVector = forwardPropogate(matrixCopy, vectorCopy)
+    eyemat, answer = backSubstitute(forMatrix, forVector)
+    return eyemat, answer
 
-        matrix[i+1][i+1] -= matrix[i+1][i]*matrix[i][i+1]
-        vector[i+1]-=matrix[i+1][i]*vector[i]
-        matrix[i+1][i]=0
 
-    i=len(vector)-1
-    vector[i] /= matrix[i][i]
-    matrix[i][i] = 1
+def forwardPropogate(matrix, vector):
+    matrixCopy = [v.copy()for v in matrix]
+    vectorCopy = vector.copy()
+    # Forward propogation
+    for i in range(len(vector)-1):  # all except last row
+        # Divide row by diagonal value
+        matrixCopy[i][i+1] /= matrixCopy[i][i]
+        vectorCopy[i] /= matrixCopy[i][i]
+        matrixCopy[i][i] = 1
 
-    #backprop
+        # Subtract row i from next row
+        matrixCopy[i+1][i+1] -= matrixCopy[i+1][i]*matrixCopy[i][i+1]
+        vectorCopy[i+1] -= matrixCopy[i+1][i]*vectorCopy[i]
+        matrixCopy[i+1][i] = 0
 
+    # Divide last row by diagonal value
+    i = len(vectorCopy)-1
+    vectorCopy[i] /= matrixCopy[i][i]
+    matrixCopy[i][i] = 1
+    return matrixCopy, vectorCopy
+
+
+def backSubstitute(matrix, vector):
+    # Back-substitution
+    matrixCopy = matrix.copy()
+    vectorCopy = vector.copy()
     for i in reversed(range(len(vector)-1)):
-        vector[i]-=matrix[i][i+1]*vector[i+1]
-        matrix[i][i+1]=0
+        vectorCopy[i] -= matrix[i][i+1]*vectorCopy[i+1]
+        matrixCopy[i][i+1] = 0
+    return matrixCopy, vectorCopy
 
 
+A = [[5, -8, 0, 0],
+        [-5, 18, -8, 0],
+        [0, -10, 34, -10],
+        [0, 0, -15, 10]]
+b = [3, 0, 0, 6]
+c,d=thomas(A,b)
 
-
-
-
-# matrix=[[2,-1,0,0,0],[-1,2,-1,0,0],[0,-1,2,-1,0],[0,0,-1,2,-1],[0,0,0,-1,2]]
-# vector=[1,1,1,1,1]
-
-# Thomas(matrix,vector)
-# for i in matrix:
-#     print (i)
-# print('\n')
-# print([round(x,5) for x in vector])

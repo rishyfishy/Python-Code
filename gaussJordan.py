@@ -12,7 +12,6 @@ def naiveGaussJordan(matrix: list, vector: list):
                 newMat[i][j] -= factor*newMat[k][j]
 
             vector[i] -= factor*vector[k]
-            print(newMat)
     # Back-substitution
     x = n*[0]
     # x[n-1] = vector[n-1]/newMat[n-1][n-1]
@@ -49,5 +48,7 @@ a = [[1, 2, 3], [1, 4, 9], [1, 8, 27]]
 b = [0, 0, -6]
 answer = naiveGaussJordan(a, b)
 print(answer)
+print(a)
+print(b)
 
 # %%
