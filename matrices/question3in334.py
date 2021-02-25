@@ -10,5 +10,5 @@ for j in range(1, 71):
     identiy, x = thomas(A, b)
     if (abs(x[1]-0.02)<0.0002):
         print (j)
-        print(x)
         print('\n')
+        print(x)

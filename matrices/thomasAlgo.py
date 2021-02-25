@@ -1,14 +1,9 @@
-
-
-
-
 def thomas(matrix, vector):
     '''
-    Void function that solves tridiagonal systems of equations
+    function that solves tridiagonal systems of equations
     inputs:
         matrix: a square matrix describing the system _A_
         vector: the input vector _x_
-
     '''
     matrixCopy = [v.copy()for v in matrix]
     vectorCopy = vector.copy()
@@ -18,6 +13,9 @@ def thomas(matrix, vector):
 
 
 def forwardPropogate(matrix, vector):
+    '''
+    Forward propogation step of thomas algorithm
+    '''
     matrixCopy = [v.copy()for v in matrix]
     vectorCopy = vector.copy()
     # Forward propogation
@@ -40,6 +38,9 @@ def forwardPropogate(matrix, vector):
 
 
 def backSubstitute(matrix, vector):
+    '''
+    Back substitution step of thomas algorithm
+    '''
     # Back-substitution
     matrixCopy = matrix.copy()
     vectorCopy = vector.copy()
@@ -49,10 +50,9 @@ def backSubstitute(matrix, vector):
     return matrixCopy, vectorCopy
 
 
-A = [[5, -8, 0, 0],
-        [-5, 18, -8, 0],
-        [0, -10, 34, -10],
-        [0, 0, -15, 10]]
-b = [3, 0, 0, 6]
-c,d=thomas(A,b)
-
+# A = [[5, -8, 0, 0],
+#         [-5, 18, -8, 0],
+#         [0, -10, 34, -10],
+#         [0, 0, -15, 10]]
+# b = [3, 0, 0, 6]
+# c,d=thomas(A,b)
