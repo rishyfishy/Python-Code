@@ -21,19 +21,19 @@ def forwardPropogate(matrix, vector):
     # Forward propogation
     for i in range(len(vector)-1):  # all except last row
         # Divide row by diagonal value
-        matrixCopy[i][i+1] /= matrixCopy[i][i]
-        vectorCopy[i] /= matrixCopy[i][i]
-        matrixCopy[i][i] = 1
+        matrixCopy[i][i+1] /= matrixCopy[i][i] #g
+        vectorCopy[i] /= matrixCopy[i][i] #r
+        # matrixCopy[i][i] = 1
 
         # Subtract row i from next row
         matrixCopy[i+1][i+1] -= matrixCopy[i+1][i]*matrixCopy[i][i+1]
         vectorCopy[i+1] -= matrixCopy[i+1][i]*vectorCopy[i]
-        matrixCopy[i+1][i] = 0
+        # matrixCopy[i+1][i] = 0
 
     # Divide last row by diagonal value
     i = len(vectorCopy)-1
     vectorCopy[i] /= matrixCopy[i][i]
-    matrixCopy[i][i] = 1
+    # matrixCopy[i][i] = 1
     return matrixCopy, vectorCopy
 
 

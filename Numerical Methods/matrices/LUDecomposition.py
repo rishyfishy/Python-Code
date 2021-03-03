@@ -64,10 +64,10 @@ def partialPivoting(matrix: list, vector: list) -> list:
                 matrix[i, j] -= factor*matrix[k, j]
 
 
-# print(eye(4))
-# a = [[1, 2, 3], [1, 4, 9], [1, 8, 27]]
-# b, c = LU(a)
-# print(b)
-# print(c)
+print(eye(4))
+a = [[2,-1,3], [-2,-2,-2], [2,-7,4]]
+b, c = LU(a)
+print(b)
+print(c)
 
 # # %%
