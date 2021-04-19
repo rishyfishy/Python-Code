@@ -1,0 +1,9 @@
+5
+(0, 0)
+(0, 4)
+
+black, downright;   black, right;   black, downright, downleft;   black, left;   GOAL
+black, upright;   black, downleft;   black, left, downleft;   black, right;   black, upleft
+black, down;   black, upleft, downright;   black, upright;   black, upleft, upright;   black, upleft
+black, downright;   black, upright;   black, downright, downleft;   black, up;   black, up, down
+black, upright;   black, left, right;   black, upright;   black, upright;   red, left

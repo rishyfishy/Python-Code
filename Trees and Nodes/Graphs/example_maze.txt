@@ -1,0 +1,7 @@
+3
+(2, 0)
+(0, 1)
+
+red, right, downright, down;  GOAL;  yellow, downleft
+black, up;  black, up;  black, downleft
+black, up, right;  black, right;  black, up

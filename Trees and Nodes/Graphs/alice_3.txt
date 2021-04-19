@@ -1,0 +1,6 @@
+2
+(0,0)
+(0,1)
+
+black,downright;GOAL
+black,up;black,upleft,left
