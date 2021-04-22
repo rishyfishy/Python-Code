@@ -11,4 +11,4 @@ def correctBrackets(s):
     
     return ans+balance
 
-print(correctBrackets('()()()()()'))
+# print(correctBrackets('()()()()()'))
