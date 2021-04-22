@@ -110,7 +110,7 @@ def makeOffsets(n: str, nodeInfo: str):
         offsets.append(str(offset).replace(' ', ''))
     return offsets
 
-# Name of the starting nde
+# Name of the starting node
 
 
 def makeStart(strtup):
