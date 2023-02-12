@@ -1,0 +1,88 @@
+# Modified BFS on an unweighted graph with nodes 0 to n-1
+def shortestDistances(n, edges):
+    """
+    :type n: int
+    :type edges: List[List[int]]
+    :rtype: List[int]
+    """
+
+    graphMap = {}
+
+    for edge in edges:
+        if graphMap.has_key(edge[0]):
+            graphMap[edge[0]].append(edge[1])
+        else:
+            graphMap[edge[0]] = [edge[1]]
+
+    dist = list((n) * [n + 1])
+    prev = list((n) * [None])
+
+    dist[0] = 0
+
+    Q = [0]
+
+    while len(Q):
+        u = Q.pop()
+        print("u=" + str(u))
+        if graphMap.has_key(u):
+            for neighboor in graphMap[u]:
+                print(neighboor)
+                if dist[neighboor] > dist[u] + 1:
+                    dist[neighboor] = dist[u] + 1
+                    prev[neighboor] = u
+                    Q.insert(0, neighboor)
+
+    print(dist)
+
+    ans = [min(dist[i], dist[i + n]) for i in range(n)]
+
+    for i in range(n):
+        if ans[i] == n + 1:
+            ans[i] = -1
+
+    return ans
+
+
+def shortestDistances(vertices, edges):
+    """
+    :type n: int
+    :type edges: List[List[int]]
+    :rtype: List[int]
+    """
+    n=len(vertices)
+    
+    graphMap = {}
+
+    for edge in edges:
+        if graphMap.has_key(edge[0]):
+            graphMap[edge[0]].append(edge[1])
+        else:
+            graphMap[edge[0]] = [edge[1]]
+
+    dist = list((n) * [n + 1])
+    prev = list((n) * [None])
+
+    dist[0] = 0
+
+    Q = [0]
+
+    while len(Q):
+        u = Q.pop()
+        print("u=" + str(u))
+        if graphMap.has_key(u):
+            for neighboor in graphMap[u]:
+                print(neighboor)
+                if dist[neighboor] > dist[u] + 1:
+                    dist[neighboor] = dist[u] + 1
+                    prev[neighboor] = u
+                    Q.insert(0, neighboor)
+
+    print(dist)
+
+    ans = [min(dist[i], dist[i + n]) for i in range(n)]
+
+    for i in range(n):
+        if ans[i] == n + 1:
+            ans[i] = -1
+
+    return ans
